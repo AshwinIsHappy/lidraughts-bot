@@ -1,4 +1,4 @@
-token: "xxxxxxxxxxxxxxxx"    # Lidraughts OAuth2 Token.
+token: testurtokenisvalidornot  # Lidraughts OAuth2 Token.
 url: "https://lidraughts.org/"  # Lidraughts base URL.
 
 engine:                      # Engine settings.
@@ -47,7 +47,7 @@ correspondence:
   ponder: false            # Ponder in correspondence games the bot is connected to.
 
 challenge:                   # Incoming challenges.
-  concurrency: 1             # Number of games to play simultaneously.
+  concurrency: 3             # Number of games to play simultaneously.
   sort_by: "best"            # Possible values: "best" and "first".
   accept_bot: false          # Accepts challenges coming from other bots.
   only_bot: false            # Accept challenges by bots only.
@@ -66,9 +66,9 @@ challenge:                   # Incoming challenges.
 #   - russian
   time_controls:             # Time controls to accept.
     - ultraBullet
-    - bullet
-    - blitz
-    - rapid
+#   - bullet
+#   - blitz
+#   - rapid
 #   - classical
 #   - correspondence
   modes:                     # Game modes to accept.
