@@ -1,4 +1,4 @@
-token: testurtokenisvalidornot  # Lidraughts OAuth2 Token.
+token: "testurtokenisvalidornot"  # Lidraughts OAuth2 Token.
 url: "https://lidraughts.org/"  # Lidraughts base URL.
 
 engine:                      # Engine settings.
