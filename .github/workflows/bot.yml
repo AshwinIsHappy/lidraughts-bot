@@ -9,9 +9,9 @@ on:
     branches:
       - "main"
     paths:
-      - "user_interface.py"
+      - "lidraughts-bot.py"
   schedule:
-    - cron: "1 */4 * * *"
+    - cron: "1 */6 * * *"
 
 concurrency:
   group: ${{ github.ref }}
@@ -26,21 +26,18 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
-     - name: Cache pip dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Python Dependency Installation
+        uses: py-actions/py-dependency-install@v4.0.0
         
-      - name: Inject Lichess Token
-        run: sed -i "s/testurtokenisvalidornot/${{ secrets.CHECKERS_KEY }}/g" config.yml
+      - name: Injection For my Repo
+        run: sed -i "s/testurtokenisvalidornot/${{ secrets.CHECKERS_KEY  }}/g" config.yml
+          
+      - name: Stockfish
+        run: |
+          chmod +x ./engines/fairy
 
-      - name: Running Stockfish
-        run: 
-         chmod +x ./engines/fairy
-
-      - name: Run the bot
+      - name: Running
         run: python3 lidraughts-bot.py
